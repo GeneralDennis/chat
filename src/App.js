@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import Chat from './Chat';
+import { useEffect, useState } from 'react';
+import firebase from './firebase';
+import 'firebase/database';
+import Messages from './Messages';
 
 function App() {
+  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    const messagesRef = firebase.database().ref('Messages');
+    messagesRef.on('value', (snapshot) => {
+      const values = snapshot.val()
+      const messList = [];
+      for (let id in values) {
+        messList.push(values[id])
+      }
+      setMessages(messList)
+    })
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Messages messages={messages}/>
+      <Chat />
+
     </div>
   );
 }
