@@ -33,20 +33,17 @@ export default function Chat() {
   }
   return (
     <form className='message-form'>
-      <div className='text-field'>
-        <textarea type="text" value={message} onChange={e => setMessage(e.target.value)}/>
-        {error && error.el.length > 0 ?  error.el === 'message' ? <div className='error'>{error.text}</div> : '' : ''}
-      </div>
+      <label className='text-field__label' htmlFor="">Your name</label>
       <div className='text-field'>
         <input type="text" value={author} onChange={e => setAuthor(e.target.value)}/>
         {error && error.el.length > 0 ?  error.el === 'author' ? <div className='error'>{error.text}</div> : '' : ''}
       </div>
+      <label className='text-field__label' htmlFor="">Add message</label>
       <div className='text-field'>
-        <button type="button" onClick={e => {
-
-        sendMessage();
-      }}>Add</button>
+        <textarea type="text" value={message} onChange={e => setMessage(e.target.value)}/>
+        {error && error.el.length > 0 ?  error.el === 'message' ? <div className='error'>{error.text}</div> : '' : ''}
       </div>
+        <button className='text-filed__button' type="button" onClick={e => {sendMessage()}}>Send Message</button>
     </form>
   )
 }

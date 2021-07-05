@@ -1,52 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
-  display: flex;
+  max-width: 768px;
+  margin: 0 auto;
 }
 
 .messages {
-  width: 60%;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: rgb(102, 148, 120);
+  border-radius: 10px;
 }
 
 .message {
   padding: 10px;
+  border-radius: 10px;
 }
 
-.message:nth-child(even){
-  background: rgb(179, 179, 179);
+.message:not(:last-child){
+  margin-bottom: 10px;
 }
 
 .message__author {
   margin-bottom: 10px;
   font-size: 14px;
-  line-height: 1;
-  font-weight: bold;
-  color: grey;
+  line-height: 1.2;
 }
 
 .message__text {
   padding: 10px;
-  border: 1px solid gray;
   border-radius: 10px;
   font-size: 16px;
-  line-height: 1;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  line-height: 1.2;
+  background: rgb(146, 173, 175);
+  /* background: rgb(102, 148, 120); */
 }
 
 .message-form {
-  width: 20%;
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgb(102, 148, 120);
 }
 
 .text-field {
-  /* position: relative; */
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgb(146, 173, 175);
+}
+
+.text-field:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.text-field textarea, .text-field input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 14px;
+  line-height: 1.2;
+  background: transparent;
+}
+
+.text-field textarea {
+  height: 100px;
+  resize: none;
+  overflow-y: hidden;
+}
+
+.text-field textarea:focus, .text-field input:focus {
+  outline: none;
+}
+
+.text-filed__button {
+  padding: 10px;
+  border: none;
+  background: rgb(146, 173, 175);
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .3s, box-shadow .3s;
+}
+
+.text-filed__button:hover {
+  background: rgba(146, 173, 175, .5);
+  box-shadow: 0px 2px 10px 1px #000;
+}
+
+.text-field__label {
+  display: block;
+  margin-bottom: 10px;
+  padding-left: 10px;
 }
 
 .error {
-  /* position: absolute;
-  bottom: 0;
-  left: 0; */
+  position: absolute;
+  bottom: -12px;
+  left: 10px;
   color: red;
-  font-size: 8px;
+  font-size: 10px;
 }
